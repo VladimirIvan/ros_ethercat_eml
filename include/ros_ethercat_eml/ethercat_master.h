@@ -41,7 +41,7 @@ class EtherCAT_PD_Buffer;
 class EC_Logic;
 class EtherCAT_DataLinkLayer;
 
-#include "ros/ros.h"
+#include "ros_ethercat_eml/ethercat_log.h"
 #include "ros_ethercat_eml/ethercat_mbx.h"
 #include "ros_ethercat_eml/ethercat_process_data.h"
 #include "ros_ethercat_eml/ethercat_slave_memory.h"

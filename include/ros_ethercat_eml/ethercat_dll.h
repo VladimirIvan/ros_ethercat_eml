@@ -30,7 +30,7 @@
 //	Automation GmbH, Eiserstrasse 5, D-33415 Verl, Germany.
 //===========================================================================
 
-#include "ros/ros.h"
+#include "ros_ethercat_eml/ethercat_log.h"
 
 #ifndef __ethercat_dll__
 #define __ethercat_dll__

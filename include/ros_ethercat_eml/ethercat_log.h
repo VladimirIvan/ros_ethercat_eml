@@ -35,6 +35,14 @@
 #define __ethercat_log_h__
 
 #include <stdio.h>
+#include <stdlib.h>
+
+// Minimal stderr logging replacing the former roscpp ROS_* macros (no ROS dependency).
+#define ROS_ERROR(...) (fprintf(stderr, "[ethercat_eml ERROR] " __VA_ARGS__), fputc('\n', stderr))
+#define ROS_INFO(...) (fprintf(stderr, "[ethercat_eml INFO] " __VA_ARGS__), fputc('\n', stderr))
+#define ROS_DEBUG(...) ((void)0)
+#define ROS_ASSERT(cond) \
+  do { if (!(cond)) { fprintf(stderr, "ASSERTION FAILED %s:%d: %s\n", __FILE__, __LINE__, #cond); abort(); } } while (0)
 
 #define EC_LOG_INFO      3
 #define EC_LOG_WARNING   2

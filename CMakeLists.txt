@@ -1,46 +1,42 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.16)
 project(ros_ethercat_eml)
 
-find_package(catkin REQUIRED roscpp)
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 17)
+endif()
 
-include_directories(include
-    ${catkin_INCLUDE_DIRS}
-)
+find_package(ament_cmake REQUIRED)
 
-catkin_package(
-    CATKIN_DEPENDS roscpp
-    INCLUDE_DIRS include
-    LIBRARIES ros_ethercat_eml
-)
-
+# Only the POSIX raw-socket driver is built (as in the ROS1 package); the Xenomai
+# header ethercat_xenomai_drv.h is declaration-only and needs no Xenomai headers.
 add_library(${PROJECT_NAME}
-    src/ethercat_AL.cxx
-    src/ethercat_FSM.cxx
-    src/ethercat_master.cxx
-    src/ethercat_mbx.cxx
-    src/ethercat_process_data.cxx
-    src/ethercat_router.cxx
-    src/ethercat_slave_conf.cxx
-    src/ethercat_slave_handler.cxx
-    src/ethercat_device_addressed_telegram.cxx
-    src/ethercat_dll.cxx
-    src/ethercat_frame.cxx
-    src/ethercat_logical_addressed_telegram.cxx
-    src/ethercat_slave_memory.cxx
-    src/ethercat_telegram.cxx
-    src/ethercat_posix_drv.cxx
+  src/ethercat_AL.cxx
+  src/ethercat_FSM.cxx
+  src/ethercat_master.cxx
+  src/ethercat_mbx.cxx
+  src/ethercat_process_data.cxx
+  src/ethercat_router.cxx
+  src/ethercat_slave_conf.cxx
+  src/ethercat_slave_handler.cxx
+  src/ethercat_device_addressed_telegram.cxx
+  src/ethercat_dll.cxx
+  src/ethercat_frame.cxx
+  src/ethercat_logical_addressed_telegram.cxx
+  src/ethercat_slave_memory.cxx
+  src/ethercat_telegram.cxx
+  src/ethercat_posix_drv.cxx
+)
+target_include_directories(${PROJECT_NAME} PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include/${PROJECT_NAME}>
 )
 
-target_link_libraries(${PROJECT_NAME}
-    ${catkin_LIBRARIES}
+install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
+install(TARGETS ${PROJECT_NAME} EXPORT export_${PROJECT_NAME}
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
 )
 
-install(TARGETS ${PROJECT_NAME}
-   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-)
-
-install(DIRECTORY include/${PROJECT_NAME}/
-   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-)
+ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
+ament_package()

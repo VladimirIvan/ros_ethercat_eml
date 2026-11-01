@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
-<package>
+<package format="3">
   <name>ros_ethercat_eml</name>
   <version>0.4.0</version>
   <description>
-  	  This is an implementation of the EtherCAT master protocol for use wiht ros_ethercar package
-      based on the work done at Flanders' Mechatronics Technology Centre and Willow Garage.
+    EtherCAT master protocol implementation for use with the ros_ethercat package,
+    based on the work done at Flanders' Mechatronics Technology Centre and Willow Garage.
   </description>
   <maintainer email="software@shadowrobot.com">Shadow Robot's software team</maintainer>
 
   <license>GPL</license>
 
   <url type="website">http://ros.org/wiki/ros_ethercat_eml</url>
-  <url type="repository">https://github.com/shadow-robot/ros_ethercat</url>
-  <url type="bugtracker">https://github.com/shadow-robot/ros_ethercat/issues</url>
+  <url type="repository">https://github.com/shadow-robot/ros_ethercat_eml</url>
+  <url type="bugtracker">https://github.com/shadow-robot/ros_ethercat_eml/issues</url>
 
   <author>Tom Panis</author>
   <author>Klaas Gadeyne</author>
@@ -20,9 +20,9 @@
   <author>Austin Hendrix</author>
   <author email="software@shadowrobot.com">Manos Nikolaidis</author>
 
-  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <build_depend>roscpp</build_depend>
-  
-  <run_depend>roscpp</run_depend>
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
 </package>
