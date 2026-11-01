@@ -9,6 +9,7 @@ find_package(ament_cmake REQUIRED)
 
 # Only the POSIX raw-socket driver is built (as in the ROS1 package); the Xenomai
 # header ethercat_xenomai_drv.h is declaration-only and needs no Xenomai headers.
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 add_library(${PROJECT_NAME}
   src/ethercat_AL.cxx
   src/ethercat_FSM.cxx
