@@ -1,5 +1,7 @@
 # ros_ethercat_eml
-ros_ethercat_eml package is a ROS wrapper around the EML library.
+ros_ethercat_eml package is a ROS 2 (ament_cmake) wrapper around the EML library. It has no ROS runtime dependency and logs to stderr.
+
+Downstream packages use `find_package(ros_ethercat_eml)` and link `ros_ethercat_eml::ros_ethercat_eml`.
 
 EML stands for Ethercat Master Library, but be aware that this is not a certified EtherCAT product.
 

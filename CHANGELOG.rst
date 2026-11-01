@@ -1,6 +1,13 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Changelog for package ros_ethercat_eml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Forthcoming
+-----------
+* Port to ROS 2 Lyrical (ament_cmake)
+* Drop the roscpp dependency; ethercat_log.h provides the logging and assert macros on stderr
+* Build the static library position independent, so it links into shared libraries
+
 0.4.0 (2022-05-16)
 ------------------
 * Migration to noetic
