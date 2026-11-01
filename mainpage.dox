@@ -1,11 +1,9 @@
 /** \mainpage
 
-@htmlinclude manifest.html
-
 @section summary Summary
-This is a catkinized version of eml library. It is based on work by Willow Garage and Flanders' Mechatronics Technology Centre.
+This is an ament_cmake package of the eml library. It is based on work by Willow Garage and Flanders' Mechatronics Technology Centre.
 
 @section usage Usage
-The will start an Ethercat master. It is meant to be use through ros_ethercat_hardware
+This will start an EtherCAT master. It is meant to be used through ros_ethercat_hardware
 
 */
